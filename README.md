@@ -83,3 +83,15 @@ curl -X GET "http://localhost:3000/api/chat/sessions"
 curl -X DELETE "http://localhost:3000/api/chat/session/${sessionId}"
 ```
 
+#### ツール呼び出し
+
+会話型とは独立した API です。
+天気の質問など、ツールが必要な場合のみ Function Calling が呼び出されます。
+
+```sh
+curl -X POST "http://localhost:3000/api/tool-chat" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "オランダの天気は？"
+  }'
+```
