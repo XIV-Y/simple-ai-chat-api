@@ -115,6 +115,21 @@ app.get('/api/chat/sessions', (c) => {
   return c.json({ sessions });
 });
 
+app.post('/api/tool-chat', async (c) => {
+  try {
+    const { message } = await c.req.json();
+    if (!message) {
+      return c.json({ error: 'Message required' }, 400);
+    }
+
+    const aiResponse = await OpenAIService.callToolOpenAIStateless(message);
+
+    return c.json({ response: aiResponse });
+  } catch (error) {
+    return c.json({ error: 'An error occurred' }, 500);
+  }
+});
+
 const PORT = Number(process.env.PORT) || 3000;
 
 console.log(`Starting server on port: ${PORT}`);

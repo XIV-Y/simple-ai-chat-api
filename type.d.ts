@@ -23,4 +23,13 @@ interface ChatResponse {
   messageCount: number;
 }
 
+interface ToolCall {
+  id: string;
+  type: 'function';
+  function: {
+    name: string;
+    arguments: string;
+  };
+}
+
 type PersonalityType = 'default' | 'pirate' | 'formal' | 'casual';
