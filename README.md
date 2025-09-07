@@ -1,5 +1,3 @@
-# simple-ai-chat-api
-
 シンプルなAIチャットAPIです。  
 
 ## セットアップと起動方法
